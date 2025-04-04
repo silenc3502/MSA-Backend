@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: golang-service
+          uri: ${GOLANG_SERVICE_URI}
+          predicates:
+            - Path=${ADMIN_API_PATH}
+          filters:
+            - RewritePath=${REWRITE_PATH_PATTERN}, /${segment}
+
+server:
+  port: ${GATEWAY_PORT}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
