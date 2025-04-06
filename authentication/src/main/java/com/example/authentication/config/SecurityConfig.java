@@ -12,6 +12,7 @@ public class SecurityConfig {
 
     private final OAuth2SuccessHandler successHandler;
     private final OAuth2FailureHandler failureHandler;
+    private final LoggingFilter loggingFilter;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -21,6 +22,7 @@ public class SecurityConfig {
                         .requestMatchers("/authentication/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .addFilterBefore(loggingFilter, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.class) // 👈 로그 찍을 필터 추가
                 .oauth2Login(oauth2 -> oauth2
                         .successHandler(successHandler)
                         .failureHandler(failureHandler)
@@ -29,4 +31,3 @@ public class SecurityConfig {
         return http.build();
     }
 }
-

@@ -21,16 +21,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtProvider jwtProvider;
     private final AuthenticatedUserRepository userRepository;
 
-    @Value("${oauth2.google.client-id}")
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
     private String clientId;
 
-    @Value("${oauth2.google.client-secret}")
+    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
     private String clientSecret;
 
-    @Value("${oauth2.google.token-uri}")
+    @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
+    private String redirectUri;
+
+    @Value("${spring.security.oauth2.client.provider.google.token-uri}")
     private String tokenUri;
 
-    @Value("${oauth2.google.user-info-uri}")
+    @Value("${spring.security.oauth2.client.provider.google.user-info-uri}")
     private String userInfoUri;
 
     public AuthenticationServiceImpl(JwtProvider jwtProvider,
