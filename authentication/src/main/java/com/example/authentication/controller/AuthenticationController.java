@@ -16,20 +16,20 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    @GetMapping("/success")
-    public ResponseEntity<?> success(@RequestParam String email) {
-        return ResponseEntity.ok("Login Success! Email: " + email);
-    }
-
-    @GetMapping("/fail")
-    public ResponseEntity<?> fail() {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
-    }
-
-    @GetMapping("/login")
-    public ResponseEntity<String> loginPage() {
-        return ResponseEntity.ok("Custom Login Page - go to /oauth2/authorization/google");
-    }
+//    @GetMapping("/success")
+//    public ResponseEntity<?> success(@RequestParam String email) {
+//        return ResponseEntity.ok("Login Success! Email: " + email);
+//    }
+//
+//    @GetMapping("/fail")
+//    public ResponseEntity<?> fail() {
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
+//    }
+//
+//    @GetMapping("/login")
+//    public ResponseEntity<String> loginPage() {
+//        return ResponseEntity.ok("Custom Login Page - go to /oauth2/authorization/google");
+//    }
 
     @GetMapping("/google")
     public void redirectToGoogleOAuth(HttpServletResponse response) throws IOException {

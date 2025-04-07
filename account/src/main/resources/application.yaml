@@ -1,0 +1,20 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: account
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/msa_test_db?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: eddi
+    password: eddi@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect

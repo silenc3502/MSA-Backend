@@ -9,6 +9,13 @@ spring:
           filters:
             - RewritePath=${REWRITE_PATH_PATTERN}, /${segment}
 
+        - id: authentication-service
+          uri: ${AUTHENTICATION_SERVICE_URI}
+          predicates:
+            - Path=${AUTH_API_PATH}
+          filters:
+            - RewritePath=/authentication/(?<segment>.*), /authentication/${segment}
+
 server:
   port: ${GATEWAY_PORT}
 

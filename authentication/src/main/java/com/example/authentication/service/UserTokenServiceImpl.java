@@ -15,15 +15,14 @@ public class UserTokenServiceImpl implements UserTokenService {
     private final RedisTemplate<String, String> redisTemplate;
 
     @Override
-    public String generateAndStoreUserToken(String oauthId, String email) {
+    public String generateAndStoreUserToken(String accountId, String email) {
         String userToken = UUID.randomUUID().toString();
-        String key = "auth:userToken:" + userToken;
 
-        redisTemplate.opsForValue().set(key, oauthId, Duration.ofHours(1));
+        redisTemplate.opsForValue().set(userToken, accountId, Duration.ofHours(1));
 
         System.out.println("[UserTokenServiceImpl] Redis 저장 완료");
-        System.out.println(" > key: " + key);
-        System.out.println(" > value(oauthId): " + oauthId);
+        System.out.println(" > key: " + userToken);
+        System.out.println(" > value(oauthId): " + accountId);
 
         return userToken;
     }
