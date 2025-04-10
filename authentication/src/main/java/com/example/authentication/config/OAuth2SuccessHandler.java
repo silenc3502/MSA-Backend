@@ -69,7 +69,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         System.out.println("[OAuth2SuccessHandler] 발급된 userToken: " + userToken);
 
         // 프론트엔드로 리디렉션
-        String redirectUri = "http://localhost:3000/oauth/callback?userToken=" + userToken;
+        String redirectUri = "http://localhost:3000/authentication/google/callback?userToken=" + userToken;
         response.sendRedirect(redirectUri);
     }
 }
