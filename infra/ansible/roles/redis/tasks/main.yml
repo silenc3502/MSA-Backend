@@ -1,0 +1,11 @@
+- name: Create Redis Docker container
+  copy:
+    src: redis-docker-compose.yml
+    dest: "{{ msa_base_path }}/redis-docker-compose.yml"
+
+- name: Launch Redis container
+  community.docker.docker_compose:
+    project_src: "{{ msa_base_path }}"
+    files:
+      - redis-docker-compose.yml
+

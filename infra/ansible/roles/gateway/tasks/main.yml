@@ -1,0 +1,9 @@
+- name: Copy Docker Compose for gateway
+  copy:
+    src: docker-compose.yml
+    dest: "{{ msa_base_path }}/gateway/docker-compose.yml"
+
+- name: Launch gateway container
+  community.docker.docker_compose:
+    project_src: "{{ msa_base_path }}/gateway"
+

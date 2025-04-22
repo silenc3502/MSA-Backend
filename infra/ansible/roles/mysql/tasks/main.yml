@@ -1,0 +1,11 @@
+- name: Create MySQL Docker container
+  copy:
+    src: mysql-docker-compose.yml
+    dest: "{{ msa_base_path }}/mysql-docker-compose.yml"
+
+- name: Launch MySQL container
+  community.docker.docker_compose:
+    project_src: "{{ msa_base_path }}"
+    files:
+      - mysql-docker-compose.yml
+

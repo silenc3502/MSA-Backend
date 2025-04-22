@@ -1,0 +1,9 @@
+- name: Copy Docker Compose for authentication
+  copy:
+    src: docker-compose.yml
+    dest: "{{ msa_base_path }}/authentication/docker-compose.yml"
+
+- name: Launch authentication container
+  community.docker.docker_compose:
+    project_src: "{{ msa_base_path }}/authentication"
+

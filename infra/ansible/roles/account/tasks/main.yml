@@ -1,0 +1,9 @@
+- name: Copy Docker Compose for account
+  copy:
+    src: docker-compose.yml
+    dest: "{{ msa_base_path }}/account/docker-compose.yml"
+
+- name: Launch account container
+  community.docker.docker_compose:
+    project_src: "{{ msa_base_path }}/account"
+

@@ -1,0 +1,12 @@
+- name: Setup MSA Infrastructure
+  hosts: all
+  become: true
+
+  roles:
+    - common
+    - mysql
+    - redis
+    - account
+    - authentication
+    - gateway
+

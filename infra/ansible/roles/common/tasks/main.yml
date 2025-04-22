@@ -1,0 +1,15 @@
+- name: Install essential packages
+  yum:
+    name:
+      - git
+      - docker
+      - docker-compose
+      - java-17-openjdk-devel
+    state: present
+
+- name: Enable and start Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+

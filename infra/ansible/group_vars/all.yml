@@ -1,0 +1,4 @@
+mysql_root_password: eddi@123
+msa_user: ec2-user
+msa_base_path: /home/ec2-user/msa
+msa_network: msa_net

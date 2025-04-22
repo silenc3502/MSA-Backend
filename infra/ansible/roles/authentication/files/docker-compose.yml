@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  authentication:
+    image: your-authentication-image:latest
+    container_name: authentication
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DB_HOST=mysql
+      - REDIS_HOST=redis
+    networks:
+      - {{ msa_network }}
+    depends_on:
+      - mysql
+      - redis
+
+networks:
+  {{ msa_network }}:
+    external: true
+
